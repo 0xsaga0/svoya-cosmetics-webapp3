@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes">
+    <title>SVOYA Cosmetics | Магазин натуральной косметики</title>
+    
+    <!-- Meta теги для адаптивности -->
+    <meta name="theme-color" content="#8a2be2">
+    <meta name="description" content="Магазин натуральной косметики SVOYA. Натуральные средства по уходу за кожей и волосами.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Основной контейнер -->
+    <div class="app-container">
+        <!-- Шапка -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <span class="logo-icon">SV</span>
+                        <h1 class="logo-text">SVOYA</h1>
+                    </div>
+                    <span class="logo-subtitle"></span>
+                </div>
+                
+                <button class="cart-btn" id="cartBtn" aria-label="Корзина">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="main-content" id="mainContent">
+            <!-- Главная страница с карточками категорий -->
+            <section class="page-section active" id="homeSection">
+                <div class="hero">
+                    <h2>Натуральная косметика <span class="highlight">SVOYA</span></h2>
+                    <p>Уход за кожей с любовью и природными компонентами</p>
+                    <div class="hero-features">
+                        <span><i class="fas fa-leaf"></i> 100% натурально</span>
+                        <span><i class="fas fa-heart"></i> Создано с любовью</span>
+                        <span><i class="fas fa-store"></i> Самовывоз</span>
+                    </div>
+                </div>
+
+                <!-- Карточки категорий -->
+                <div class="categories-container">
+                    <h2 class="section-title">Выберите категорию</h2>
+                    <div class="categories-grid" id="categoriesGrid">
+                        <!-- Карточки будут загружены через JS -->
+                    </div>
+                </div>
+
+                <!-- Промо блок -->
+                <div class="promo-section">
+                    <div class="promo-card">
+                        <div class="promo-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="promo-content">
+                            <h4>У нас цены подарок</h4>
+                            <p>Все товары дешевле, чем у конкурентов</p>
+                        </div>
+                    </div>
+                    <div class="promo-card">
+                        <div class="promo-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="promo-content">
+                            <h4>Сертифицированная продукция</h4>
+                            <p>Все товары прошли проверку</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Страница каталога -->
+            <section class="page-section" id="catalogSection">
+                <div class="catalog-header">
+                    <button class="back-btn" id="backToCategories">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Назад к категориям</span>
+                    </button>
+                    <h2 class="catalog-title" id="catalogTitle">Каталог товаров</h2>
+                </div>
+
+                <div class="catalog-content">
+                    <div class="products-container">
+                        <div class="products-grid" id="productsGrid">
+                            <!-- Товары будут загружены через JS -->
+                        </div>
+                        <div class="no-products" id="noProducts">
+                            <i class="fas fa-search"></i>
+                            <p>Товары не найдены</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Страница "О компании" -->
+            <section class="page-section" id="aboutSection">
+                <div class="about-container">
+                    <div class="about-header">
+                        <h2 class="section-title">О компании SVOYA</h2>
+                        <button class="back-btn" id="backFromAbout">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Назад</span>
+                        </button>
+                    </div>
+                    
+                    <div class="about-content">
+                        <div class="about-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="about-text">
+                            <h3>Наша философия</h3>
+                            <p>SVOYA - написать о компании</p>
+                            
+                            <h3>Наши ценности</h3>
+                            <div class="values-list">
+                                <div class="value-item">
+                                    <i class="fas fa-leaf"></i>
+                                    <div>
+                                        <h4>Натуральность</h4>
+                                        <p>100% натуральные ингредиенты без химии</p>
+                                    </div>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fas fa-heart"></i>
+                                    <div>
+                                        <h4>Качество</h4>
+                                        <p>Строгий контроль на всех этапах производства</p>
+                                    </div>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                    <div>
+                                        <h4>Этика</h4>
+                                        <p>Тестируем на себе</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Производство</h3>
+                            <p>Вся продукция производится на нашем собственном производстве в Голубиной пади, ул. Гоголя, 41.</p>
+                            
+                            <div class="company-details">
+                                <p><strong>ООО "СИБ-ДВ"</strong></p>
+                                <p>Голубиная падь, ул. Гоголя, 41</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Страница "Контакты" -->
+            <section class="page-section" id="contactsSection">
+                <div class="contacts-container">
+                    <div class="contacts-header">
+                        <h2 class="section-title">Контакты</h2>
+                        <button class="back-btn" id="backFromContacts">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Назад</span>
+                        </button>
+                    </div>
+                    
+                    <div class="contacts-grid">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Адрес самовывоза</h3>
+                                <p>Голубиная падь, ул. Гоголя, 41</p>
+                                <p class="contact-note">ООО "СИБ-ДВ"</p>
+                                <button class="btn btn-outline btn-small" onclick="openMap()">
+                                    <i class="fas fa-map"></i> Показать на карте
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Телефон</h3>
+                                <p>+7 (999) 123-45-67</p>
+                                <button class="btn btn-outline btn-small" onclick="callPhone('+79991234567')">
+                                    <i class="fas fa-phone-alt"></i> Позвонить
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Время работы</h3>
+                                <p>Пн-Пт: 9:00 - 20:00</p>
+                                <p>Сб-Вс: 10:00 - 18:00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Оплата</h3>
+                                <p>Наличными при получении</p>
+                                <p class="payment-note">Только самовывоз и оплата при получении</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Нижняя навигация -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-section="home" id="homeNavBtn">
+                <i class="fas fa-home"></i>
+                <span>Каталог</span>
+            </button>
+            <button class="nav-btn" data-section="about" id="aboutNavBtn">
+                <i class="fas fa-info-circle"></i>
+                <span>О нас</span>
+            </button>
+            <button class="nav-btn" data-section="contacts" id="contactsNavBtn">
+                <i class="fas fa-phone"></i>
+                <span>Контакты</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Модальное окно корзины -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-bag"></i> Ваша корзина</h3>
+                <button class="modal-close" id="closeCartModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Товары в корзине -->
+                </div>
+                <div class="cart-empty" id="cartEmpty">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Корзина пуста</p>
+                    <button class="btn btn-outline" onclick="closeCart()">Продолжить покупки</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span id="cartTotalPrice">0 ₽</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn btn-secondary" id="clearCartBtn">Очистить</button>
+                    <button class="btn btn-primary" id="checkoutBtn">Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно оформления заказа -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content order-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-clipboard-list"></i> Оформление заказа</h3>
+                <button class="modal-close" id="closeOrderModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm">
+                    <div class="order-notice">
+                        <div class="notice-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="notice-text">
+                            <p><strong>Внимание!</strong> Только самовывоз и оплата наличными при получении.</p>
+                            <p>Адрес: Голубиная падь, ул. Гоголя, 41</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="orderName">Имя *</label>
+                        <input type="text" id="orderName" required placeholder="Введите ваше имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderPhone">Телефон *</label>
+                        <input type="tel" id="orderPhone" required placeholder="+7 (999) 123-45-67">
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h4>Ваш заказ:</h4>
+                        <div id="orderItemsPreview"></div>
+                        <div class="order-total">
+                            <span>Итого к оплате:</span>
+                            <span id="orderTotalPrice">0 ₽</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-notice">
+                        <p><i class="fas fa-info-circle"></i> После оформления заказа мы свяжемся с вами для подтверждения.</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="orderForm" class="btn btn-primary btn-block">Подтвердить заказ</button>
+                <button type="button" class="btn btn-outline btn-block" id="backToCartBtn">Вернуться в корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно успешного заказа -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Заказ оформлен!</h3>
+            <p>Спасибо за покупку! Мы свяжемся с вами в течение 15 минут для подтверждения заказа.</p>
+            <p class="order-number">Номер заказа: <span id="orderNumber">SV-001</span></p>
+            <div class="order-details">
+                <p><strong>Способ получения:</strong> Самовывоз</p>
+                <p><strong>Адрес:</strong> Голубиная падь, ул. Гоголя, 41</p>
+                <p><strong>Оплата:</strong> Наличными при получении</p>
+            </div>
+            <div class="success-actions">
+                <button class="btn btn-primary" id="continueShoppingBtn">Продолжить покупки</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомления -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- Подключение JavaScript -->
+<!-- В секции подключения JavaScript добавьте: -->
+    <script src="js/config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/telegram.js"></script> <!-- Добавьте эту строку -->
+    <script src="js/app.js"></script>
+</body>
+</html>
